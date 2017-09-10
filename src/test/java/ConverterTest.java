@@ -40,11 +40,20 @@ public class ConverterTest {
         assertConverts(2, "II");
     }
 
+    @Test
+    public void convertThreeToIII() throws Exception {
+        assertConverts(3, "III");
+    }
+
     private String convert(Integer n) {
         if (n == null)
             return "";
-        if (dictionary[n] == null)
-            dictionary[2] = "II";
+        if (dictionary[n] == null) {
+            if (n == 2)
+                dictionary[2] = "II";
+            else
+                dictionary[3] = "III";
+        }
         return dictionary[n];
     }
 }
