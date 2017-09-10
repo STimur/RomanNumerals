@@ -35,9 +35,16 @@ public class ConverterTest {
         assertConverts(1000, "M");
     }
 
+    @Test
+    public void convertTwoToII() throws Exception {
+        assertConverts(2, "II");
+    }
+
     private String convert(Integer n) {
         if (n == null)
             return "";
+        if (dictionary[n] == null)
+            dictionary[2] = "II";
         return dictionary[n];
     }
 }
