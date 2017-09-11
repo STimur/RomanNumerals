@@ -29,10 +29,20 @@ public class ConverterTest {
         assertConverts(5, "V");
     }
 
+    @Test
+    public void convertSixToEight() throws Exception {
+        assertConverts(6, "VI");
+        assertConverts(7, "VII");
+        assertConverts(8, "VIII");
+    }
+
     private String convert(Integer n) {
         if (n == null)
             return "";
-        if (n > 3)
+
+        if (n/5 == 1)
+            return "V" + "III".substring(0, n - 5);
+        if (n == 4)
             return "III".substring(0, 5 - n) + "V";
         return "III".substring(0, n);
     }
