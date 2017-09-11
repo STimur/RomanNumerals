@@ -3,7 +3,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class ConverterTest {
-    private static String[] dictionary = new String[1001];
+    private static String[] dictionary = new String[1002];
 
     static {
         dictionary[1] = "I";
@@ -45,14 +45,19 @@ public class ConverterTest {
         assertConverts(3, "III");
     }
 
+    @Test
+    public void convertFourToIV() throws Exception {
+        assertConverts(4, "IV");
+    }
+
     private String convert(Integer n) {
         if (n == null)
             return "";
         if (dictionary[n] == null) {
-            if (n == 2)
-                dictionary[2] = "II";
+            if (n == 4)
+                dictionary[n] = "IV";
             else
-                dictionary[3] = "III";
+                dictionary[n] = "III".substring(0, n);
         }
         return dictionary[n];
     }
