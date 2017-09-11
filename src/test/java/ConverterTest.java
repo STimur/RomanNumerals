@@ -3,7 +3,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class ConverterTest {
-    private static String[] dictionary = new String[11];
+    private static String[] dictionary = new String[12];
 
     static {
         dictionary[5] = "V";
@@ -48,12 +48,17 @@ public class ConverterTest {
         assertConverts(9, "IX");
     }
 
+    @Test
+    public void convertTen() throws Exception {
+        assertConverts(10, "X");
+    }
+
     private String convert(Integer n) {
         if (n == null)
             return "";
 
         if (dictionary[n + 1] != null)
             return "I" + dictionary[n + 1];
-        return ((n / 5 == 1) ? "V" : "") + "III".substring(0, n%5);
+        return ((n / 5 > 0) ? dictionary[n / 5 * 5] : "") + "III".substring(0, n % 5);
     }
 }
