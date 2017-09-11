@@ -58,14 +58,22 @@ public class ConverterTest {
         assertConverts(14, "XIV");
     }
 
+    @Test
+    public void convertFifteenToTwenty() throws Exception {
+        assertConverts(15, "XV");
+        assertConverts(16, "XVI");
+        assertConverts(17, "XVII");
+        assertConverts(18, "XVIII");
+        assertConverts(19, "XIX");
+        assertConverts(20, "XX");
+    }
+
     private String convert(Integer n) {
         if (n == null)
             return "";
 
         int tens = n / 10;
-        int nines = 0;
-        if (tens == 0)
-            nines = n / 9;
+        int nines = (n - tens * 10) / 9;
         int fives = (n - tens * 10 - nines * 9) / 5;
         int fours = 0;
         if (fives == 0)
@@ -73,7 +81,7 @@ public class ConverterTest {
         int ones = (n - tens * 10 - nines * 9 - fives * 5 - fours * 4);
 
         return
-                "X".substring(0, tens) + ((nines == 1) ? "IX" : "") +
+                "XX".substring(0, tens) + ((nines == 1) ? "IX" : "") +
                         "V".substring(0, fives) + ((fours == 1) ? "IV" : "") +
                         "III".substring(0, ones);
     }
