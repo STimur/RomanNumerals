@@ -113,6 +113,8 @@ public class ConverterTest {
         assertConverts(33, "XXXIII");
         assertConverts(39, "XXXIX");
         assertConverts(84, "LXXXIV");
+        assertConverts(101, "CI");
+        assertConverts(384, "CCCLXXXIV");
     }
 
     private String convert(Integer n) {
