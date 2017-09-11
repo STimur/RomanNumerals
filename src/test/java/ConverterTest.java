@@ -1,13 +1,24 @@
 import org.junit.Test;
 
+import java.util.Collections;
+
 import static org.junit.Assert.assertEquals;
 
 public class ConverterTest {
-    private static String[] dictionary = new String[16];
+    private static int[] keys = new int[5];
+    private static String[] dictionary = new String[5];
 
     static {
-        dictionary[5] = "V";
-        dictionary[10] = "X";
+        keys[0] = 1;
+        dictionary[0] = "I";
+        keys[1] = 4;
+        dictionary[1] = "IV";
+        keys[2] = 5;
+        dictionary[2] = "V";
+        keys[3] = 9;
+        dictionary[3] = "IX";
+        keys[4] = 10;
+        dictionary[4] = "X";
     }
 
     private void assertConverts(Integer n, String expected) {
@@ -72,17 +83,13 @@ public class ConverterTest {
         if (n == null)
             return "";
 
-        int tens = n / 10;
-        int nines = (n - tens * 10) / 9;
-        int fives = (n - tens * 10 - nines * 9) / 5;
-        int fours = 0;
-        if (fives == 0)
-            fours = (n - tens * 10 - nines * 9 - fives * 5) / 4;
-        int ones = (n - tens * 10 - nines * 9 - fives * 5 - fours * 4);
+        return convert(n, keys.length - 1);
+    }
 
-        return
-                "XX".substring(0, tens) + ((nines == 1) ? "IX" : "") +
-                        "V".substring(0, fives) + ((fours == 1) ? "IV" : "") +
-                        "III".substring(0, ones);
+    private String convert(int n, int keyIndex) {
+        if (n == 0)
+            return "";
+        return String.join("", Collections.nCopies(n/keys[keyIndex], dictionary[keyIndex])) +
+                convert(n - n/keys[keyIndex]*keys[keyIndex], keyIndex-1);
     }
 }
