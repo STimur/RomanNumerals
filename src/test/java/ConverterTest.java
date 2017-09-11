@@ -127,7 +127,15 @@ public class ConverterTest {
     private String convert(int n, int keyIndex) {
         if (n == 0)
             return "";
-        return String.join("", Collections.nCopies(n/keys[keyIndex], dictionary[keyIndex])) +
-                convert(n - n/keys[keyIndex]*keys[keyIndex], keyIndex-1);
+        return insertAppropriateNumberOfKey(n, keyIndex) +
+                convert(decrease(n, keyIndex), --keyIndex);
+    }
+
+    private int decrease(int n, int keyIndex) {
+        return n - n/keys[keyIndex]*keys[keyIndex];
+    }
+
+    private String insertAppropriateNumberOfKey(int n, int keyIndex) {
+        return String.join("", Collections.nCopies(n/keys[keyIndex], dictionary[keyIndex]));
     }
 }
