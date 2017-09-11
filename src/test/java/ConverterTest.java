@@ -13,13 +13,15 @@ public class ConverterTest {
     }
 
     @Test
-    public void oneConvertedToI() throws Exception {
+    public void oneToThreeConversions() throws Exception {
         assertConverts(1, "I");
+        assertConverts(2, "II");
+        assertConverts(3, "III");
     }
 
     private String convert(Integer n) {
         if (n == null)
             return "";
-        return "I";
+        return "III".substring(0,n);
     }
 }
