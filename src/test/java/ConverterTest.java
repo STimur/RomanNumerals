@@ -24,11 +24,16 @@ public class ConverterTest {
         assertConverts(4, "IV");
     }
 
+    @Test
+    public void convertFive() throws Exception {
+        assertConverts(5, "V");
+    }
+
     private String convert(Integer n) {
         if (n == null)
             return "";
-        if (n + 1 == 5)
-            return "IV";
-        return "III".substring(0,n);
+        if (n > 3)
+            return "III".substring(0, 5 - n) + "V";
+        return "III".substring(0, n);
     }
 }
