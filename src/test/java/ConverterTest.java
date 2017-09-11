@@ -36,14 +36,22 @@ public class ConverterTest {
         assertConverts(8, "VIII");
     }
 
+    @Test
+    public void convertNine() throws Exception {
+        assertConverts(9, "IX");
+    }
+
     private String convert(Integer n) {
         if (n == null)
             return "";
 
+        if (n == 9)
+            return "I" + "X";
         if (n/5 == 1)
             return "V" + "III".substring(0, n - 5);
         if (n == 4)
-            return "III".substring(0, 5 - n) + "V";
+            return "I" + "V";
+
         return "III".substring(0, n);
     }
 }
