@@ -5,8 +5,8 @@ import java.util.Collections;
 import static org.junit.Assert.assertEquals;
 
 public class ConverterTest {
-    private static int[] keys = new int[7];
-    private static String[] dictionary = new String[7];
+    private static int[] keys = new int[8];
+    private static String[] dictionary = new String[8];
 
     static {
         keys[0] = 1;
@@ -23,6 +23,8 @@ public class ConverterTest {
         dictionary[5] = "XL";
         keys[6] = 50;
         dictionary[6] = "L";
+        keys[7] = 90;
+        dictionary[7] = "XC";
     }
 
     private void assertConverts(Integer n, String expected) {
@@ -91,6 +93,11 @@ public class ConverterTest {
     @Test
     public void convertFifty() throws Exception {
         assertConverts(50, "L");
+    }
+
+    @Test
+    public void convertNinety() throws Exception {
+        assertConverts(90, "XC");
     }
 
     @Test
