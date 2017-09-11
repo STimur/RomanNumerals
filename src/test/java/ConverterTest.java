@@ -98,6 +98,7 @@ public class ConverterTest {
         assertConverts(29, "XXIX");
         assertConverts(33, "XXXIII");
         assertConverts(39, "XXXIX");
+        assertConverts(84, "LXXXIV");
     }
 
     private String convert(Integer n) {
