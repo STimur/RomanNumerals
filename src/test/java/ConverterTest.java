@@ -79,6 +79,13 @@ public class ConverterTest {
         assertConverts(20, "XX");
     }
 
+    @Test
+    public void randomTest() throws Exception {
+        assertConverts(29, "XXIX");
+        assertConverts(33, "XXXIII");
+        assertConverts(39, "XXXIX");
+    }
+
     private String convert(Integer n) {
         if (n == null)
             return "";
