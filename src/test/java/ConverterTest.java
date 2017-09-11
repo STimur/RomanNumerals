@@ -50,15 +50,24 @@ public class ConverterTest {
         assertConverts(4, "IV");
     }
 
+    @Test
+    public void convertNineToIX() throws Exception {
+        assertConverts(9, "IX");
+    }
+
     private String convert(Integer n) {
         if (n == null)
             return "";
         if (dictionary[n] == null) {
-            if (n == 4)
-                dictionary[n] = "IV";
+            if (nextNumberIsBasicRoman(n))
+                dictionary[n] = "I" + dictionary[n+1];
             else
                 dictionary[n] = "III".substring(0, n);
         }
         return dictionary[n];
+    }
+
+    private boolean nextNumberIsBasicRoman(int n) {
+        return n == 4 || n == 9;
     }
 }
