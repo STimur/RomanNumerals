@@ -3,6 +3,13 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class ConverterTest {
+    private static String[] dictionary = new String[11];
+
+    static {
+        dictionary[5] = "V";
+        dictionary[10] = "X";
+    }
+
     private void assertConverts(Integer n, String expected) {
         assertEquals(expected, convert(n));
     }
@@ -45,13 +52,8 @@ public class ConverterTest {
         if (n == null)
             return "";
 
-        if (n == 9)
-            return "I" + "X";
-        if (n/5 == 1)
-            return "V" + "III".substring(0, n - 5);
-        if (n == 4)
-            return "I" + "V";
-
-        return "III".substring(0, n);
+        if (dictionary[n + 1] != null)
+            return "I" + dictionary[n + 1];
+        return ((n / 5 == 1) ? "V" : "") + "III".substring(0, n%5);
     }
 }
