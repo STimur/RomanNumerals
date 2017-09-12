@@ -1,7 +1,7 @@
 import java.util.Collections;
 
 public class Converter {
-    static DictionaryItem[] dictionary = new DictionaryItem[13];
+    private static DictionaryItem[] dictionary = new DictionaryItem[13];
 
     static {
         dictionary[0] = new DictionaryItem(1, "I");
@@ -19,26 +19,25 @@ public class Converter {
         dictionary[12] = new DictionaryItem(1000, "M");
     }
 
-    String convert(Integer n) {
+    public String convert(Integer n) {
         if (n == null)
             return "";
-
-        return convert(n, dictionary.length - 1);
+        return countNumberOfDictionaryItemForNumber(n, dictionary.length - 1);
     }
 
-    String convert(int n, int keyIndex) {
+    private String countNumberOfDictionaryItemForNumber(int n, int i) {
         if (n == 0)
             return "";
-        return insertAppropriateNumberOfKey(n, keyIndex) +
-                convert(decrease(n, keyIndex), --keyIndex);
+        return insertAppropriateNumberOfDictionaryItemForNumber(n, i) +
+                countNumberOfDictionaryItemForNumber(decrease(n, i), i-1);
     }
 
-    int decrease(int n, int keyIndex) {
-        return n - n / dictionary[keyIndex].arabicValue * dictionary[keyIndex].arabicValue;
+    private String insertAppropriateNumberOfDictionaryItemForNumber(int n, int i) {
+        return String.join("", Collections.nCopies(n / dictionary[i].arabicValue, dictionary[i].romanValue));
     }
 
-    String insertAppropriateNumberOfKey(int n, int keyIndex) {
-        return String.join("", Collections.nCopies(n / dictionary[keyIndex].arabicValue, dictionary[keyIndex].romanValue));
+    private int decrease(int n, int i) {
+        return n - n / dictionary[i].arabicValue * dictionary[i].arabicValue;
     }
 
     private static class DictionaryItem {
