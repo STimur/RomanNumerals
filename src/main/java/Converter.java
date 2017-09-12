@@ -1,43 +1,29 @@
 import java.util.Collections;
 
 public class Converter {
-    static int[] keys = new int[13];
-    static String[] dictionary = new String[13];
+    static DictionaryItem[] dictionary = new DictionaryItem[13];
 
     static {
-        keys[0] = 1;
-        dictionary[0] = "I";
-        keys[1] = 4;
-        dictionary[1] = "IV";
-        keys[2] = 5;
-        dictionary[2] = "V";
-        keys[3] = 9;
-        dictionary[3] = "IX";
-        keys[4] = 10;
-        dictionary[4] = "X";
-        keys[5] = 40;
-        dictionary[5] = "XL";
-        keys[6] = 50;
-        dictionary[6] = "L";
-        keys[7] = 90;
-        dictionary[7] = "XC";
-        keys[8] = 100;
-        dictionary[8] = "C";
-        keys[9] = 400;
-        dictionary[9] = "CD";
-        keys[10] = 500;
-        dictionary[10] = "D";
-        keys[11] = 900;
-        dictionary[11] = "CM";
-        keys[12] = 1000;
-        dictionary[12] = "M";
+        dictionary[0] = new DictionaryItem(1, "I");
+        dictionary[1] = new DictionaryItem(4, "IV");
+        dictionary[2] = new DictionaryItem(5, "V");
+        dictionary[3] = new DictionaryItem(9, "IX");
+        dictionary[4] = new DictionaryItem(10, "X");
+        dictionary[5] = new DictionaryItem(40, "XL");
+        dictionary[6] = new DictionaryItem(50, "L");
+        dictionary[7] = new DictionaryItem(90, "XC");
+        dictionary[8] = new DictionaryItem(100, "C");
+        dictionary[9] = new DictionaryItem(400, "CD");
+        dictionary[10] = new DictionaryItem(500, "D");
+        dictionary[11] = new DictionaryItem(900, "CM");
+        dictionary[12] = new DictionaryItem(1000, "M");
     }
 
     String convert(Integer n) {
         if (n == null)
             return "";
 
-        return convert(n, keys.length - 1);
+        return convert(n, dictionary.length - 1);
     }
 
     String convert(int n, int keyIndex) {
@@ -48,10 +34,20 @@ public class Converter {
     }
 
     int decrease(int n, int keyIndex) {
-        return n - n / keys[keyIndex] * keys[keyIndex];
+        return n - n / dictionary[keyIndex].arabicValue * dictionary[keyIndex].arabicValue;
     }
 
     String insertAppropriateNumberOfKey(int n, int keyIndex) {
-        return String.join("", Collections.nCopies(n / keys[keyIndex], dictionary[keyIndex]));
+        return String.join("", Collections.nCopies(n / dictionary[keyIndex].arabicValue, dictionary[keyIndex].romanValue));
+    }
+
+    private static class DictionaryItem {
+        final int arabicValue;
+        final String romanValue;
+
+        public DictionaryItem(int arabicValue, String romanValue) {
+            this.arabicValue = arabicValue;
+            this.romanValue = romanValue;
+        }
     }
 }
