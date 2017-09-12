@@ -16,101 +16,41 @@ public class ConverterTest {
     }
 
     @Test
-    public void nullConvertedToEmptyString() throws Exception {
+    public void nullConversion() throws Exception {
         assertConverts(null, "");
     }
 
     @Test
-    public void oneToThreeConversions() throws Exception {
+    public void simpleConversions() throws Exception {
         assertConverts(1, "I");
+        assertConverts(4, "IV");
+        assertConverts(5, "V");
+        assertConverts(9, "IX");
+        assertConverts(10, "X");
+        assertConverts(40, "XL");
+        assertConverts(50, "L");
+        assertConverts(90, "XC");
+        assertConverts(100, "C");
+        assertConverts(400, "CD");
+        assertConverts(500, "D");
+        assertConverts(900, "CM");
+        assertConverts(1000, "M");
+    }
+
+    @Test
+    public void complexConversions() throws Exception {
         assertConverts(2, "II");
         assertConverts(3, "III");
-    }
-
-    @Test
-    public void convertFour() throws Exception {
-        assertConverts(4, "IV");
-    }
-
-    @Test
-    public void convertFive() throws Exception {
-        assertConverts(5, "V");
-    }
-
-    @Test
-    public void convertSixToEight() throws Exception {
         assertConverts(6, "VI");
         assertConverts(7, "VII");
         assertConverts(8, "VIII");
-    }
-
-    @Test
-    public void convertNine() throws Exception {
-        assertConverts(9, "IX");
-    }
-
-    @Test
-    public void convertTen() throws Exception {
-        assertConverts(10, "X");
-    }
-
-    @Test
-    public void convertFourteen() throws Exception {
         assertConverts(14, "XIV");
-    }
-
-    @Test
-    public void convertFifteenToTwenty() throws Exception {
         assertConverts(15, "XV");
         assertConverts(16, "XVI");
         assertConverts(17, "XVII");
         assertConverts(18, "XVIII");
         assertConverts(19, "XIX");
         assertConverts(20, "XX");
-    }
-
-    @Test
-    public void convertFourty() throws Exception {
-        assertConverts(40, "XL");
-    }
-
-    @Test
-    public void convertFifty() throws Exception {
-        assertConverts(50, "L");
-    }
-
-    @Test
-    public void convertNinety() throws Exception {
-        assertConverts(90, "XC");
-    }
-
-    @Test
-    public void convertHundred() throws Exception {
-        assertConverts(100, "C");
-    }
-
-    @Test
-    public void convertFourHundred() throws Exception {
-        assertConverts(400, "CD");
-    }
-
-    @Test
-    public void convertFiveHundred() throws Exception {
-        assertConverts(500, "D");
-    }
-
-    @Test
-    public void convertNineHundred() throws Exception {
-        assertConverts(900, "CM");
-    }
-
-    @Test
-    public void convertThousand() throws Exception {
-        assertConverts(1000, "M");
-    }
-
-    @Test
-    public void randomTest() throws Exception {
         assertConverts(29, "XXIX");
         assertConverts(33, "XXXIII");
         assertConverts(39, "XXXIX");
