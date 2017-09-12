@@ -5,8 +5,8 @@ import java.util.Collections;
 import static org.junit.Assert.assertEquals;
 
 public class ConverterTest {
-    private static int[] keys = new int[9];
-    private static String[] dictionary = new String[9];
+    private static int[] keys = new int[13];
+    private static String[] dictionary = new String[13];
 
     static {
         keys[0] = 1;
@@ -27,6 +27,14 @@ public class ConverterTest {
         dictionary[7] = "XC";
         keys[8] = 100;
         dictionary[8] = "C";
+        keys[9] = 400;
+        dictionary[9] = "CD";
+        keys[10] = 500;
+        dictionary[10] = "D";
+        keys[11] = 900;
+        dictionary[11] = "CM";
+        keys[12] = 1000;
+        dictionary[12] = "M";
     }
 
     private void assertConverts(Integer n, String expected) {
@@ -108,6 +116,26 @@ public class ConverterTest {
     }
 
     @Test
+    public void convertFourHundred() throws Exception {
+        assertConverts(400, "CD");
+    }
+
+    @Test
+    public void convertFiveHundred() throws Exception {
+        assertConverts(500, "D");
+    }
+
+    @Test
+    public void convertNineHundred() throws Exception {
+        assertConverts(900, "CM");
+    }
+
+    @Test
+    public void convertThousand() throws Exception {
+        assertConverts(1000, "M");
+    }
+
+    @Test
     public void randomTest() throws Exception {
         assertConverts(29, "XXIX");
         assertConverts(33, "XXXIII");
@@ -115,6 +143,9 @@ public class ConverterTest {
         assertConverts(84, "LXXXIV");
         assertConverts(101, "CI");
         assertConverts(384, "CCCLXXXIV");
+        assertConverts(846, "DCCCXLVI");
+        assertConverts(1999, "MCMXCIX");
+        assertConverts(2008, "MMVIII");
     }
 
     private String convert(Integer n) {
