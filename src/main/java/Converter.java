@@ -8,13 +8,14 @@ public class Converter {
         dictionary.put(1, "I");
         dictionary.put(4, "IV");
         dictionary.put(5, "V");
-        dictionary.put(6, "VI");
-        dictionary.put(7, "VII");
     }
 
     public static String convert(int n) {
         if (dictionary.containsKey(n))
             return dictionary.get(n);
+        if (n > 5)
+            return dictionary.get(5) + convert(n-5);
+
         return dictionary.get(1) + convert(n-1);
     }
 }
