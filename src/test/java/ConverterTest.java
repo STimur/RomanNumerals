@@ -32,4 +32,9 @@ public class ConverterTest {
     public void convertFive() throws Exception {
         assertConverts(5, "V");
     }
+
+    @Test
+    public void convertSix() throws Exception {
+        assertConverts(6, "VI");
+    }
 }
