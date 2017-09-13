@@ -1,6 +1,7 @@
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class ConverterTest {
     private void assertConverts(int n, String expected) {
@@ -25,5 +26,10 @@ public class ConverterTest {
     @Test
     public void convertFour() throws Exception {
         assertConverts(4, "IV");
+    }
+
+    @Test
+    public void convertFive() throws Exception {
+        assertConverts(5, "V");
     }
 }
