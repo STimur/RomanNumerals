@@ -37,4 +37,9 @@ public class ConverterTest {
     public void convertSix() throws Exception {
         assertConverts(6, "VI");
     }
+
+    @Test
+    public void convertSeven() throws Exception {
+        assertConverts(7, "VII");
+    }
 }
