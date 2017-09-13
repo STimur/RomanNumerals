@@ -42,4 +42,9 @@ public class ConverterTest {
     public void convertSeven() throws Exception {
         assertConverts(7, "VII");
     }
+
+    @Test
+    public void convertNine() throws Exception {
+        assertConverts(9, "IX");
+    }
 }

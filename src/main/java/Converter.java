@@ -8,6 +8,7 @@ public class Converter {
         dictionary.put(1, "I");
         dictionary.put(4, "IV");
         dictionary.put(5, "V");
+        dictionary.put(9, "IX");
     }
 
     public static String convert(int n) {
