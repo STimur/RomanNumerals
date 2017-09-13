@@ -3,18 +3,22 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class ConverterTest {
+    private void assertConverts(int n, String expected) {
+        assertEquals(expected, Converter.convert(n));
+    }
+
     @Test
     public void convertOne() throws Exception {
-        assertEquals("I", Converter.convert(1));
+        assertConverts(1, "I");
     }
 
     @Test
     public void convertTwo() throws Exception {
-        assertEquals("II", Converter.convert(2));
+        assertConverts(2, "II");
     }
 
     @Test
     public void convertThree() throws Exception {
-        assertEquals("III", Converter.convert(3));
+        assertConverts(3, "III");
     }
 }
