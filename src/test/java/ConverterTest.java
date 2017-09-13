@@ -21,4 +21,9 @@ public class ConverterTest {
     public void convertThree() throws Exception {
         assertConverts(3, "III");
     }
+
+    @Test
+    public void convertFour() throws Exception {
+        assertConverts(4, "IV");
+    }
 }
