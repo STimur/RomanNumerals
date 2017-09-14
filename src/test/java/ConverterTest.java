@@ -74,4 +74,15 @@ public class ConverterTest {
         assertConverts(46, "XLVI");
         assertConverts(49, "XLIX");
     }
+
+    @Test
+    public void remainingSimpleConversions() throws Exception {
+        assertConverts(50, "L");
+        assertConverts(90, "XC");
+        assertConverts(100, "C");
+        assertConverts(400, "CD");
+        assertConverts(500, "D");
+        assertConverts(900, "CM");
+        assertConverts(1000, "M");
+    }
 }
