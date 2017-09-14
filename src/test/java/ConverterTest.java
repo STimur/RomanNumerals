@@ -64,4 +64,14 @@ public class ConverterTest {
     public void convertFourty() throws Exception {
         assertConverts(40, "XL");
     }
+
+    @Test
+    public void convertFourtyOneToFourtyNine() throws Exception {
+        assertConverts(41, "XLI");
+        assertConverts(42, "XLII");
+        assertConverts(44, "XLIV");
+        assertConverts(45, "XLV");
+        assertConverts(46, "XLVI");
+        assertConverts(49, "XLIX");
+    }
 }
