@@ -59,4 +59,9 @@ public class ConverterTest {
         assertConverts(12, "XII");
         assertConverts(13, "XIII");
     }
+
+    @Test
+    public void convertFourty() throws Exception {
+        assertConverts(40, "XL");
+    }
 }

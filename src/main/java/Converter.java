@@ -10,6 +10,7 @@ public class Converter {
         dictionary.put(5, "V");
         dictionary.put(9, "IX");
         dictionary.put(10, "X");
+        dictionary.put(40, "XL");
     }
 
     public static String convert(int n) {
