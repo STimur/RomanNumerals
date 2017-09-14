@@ -52,4 +52,11 @@ public class ConverterTest {
     public void convertTen() throws Exception {
         assertConverts(10, "X");
     }
+
+    @Test
+    public void convertElevenToThirteen() throws Exception {
+        assertConverts(11, "XI");
+        assertConverts(12, "XII");
+        assertConverts(13, "XIII");
+    }
 }
