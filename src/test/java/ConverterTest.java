@@ -40,4 +40,13 @@ public class ConverterTest {
         assertConverts(46, "XLVI");
         assertConverts(49, "XLIX");
     }
+
+    @Test
+    public void acceptanceTest() throws Exception {
+        assertConverts(449, "CDXLIX");
+        assertConverts(846, "DCCCXLVI");
+        assertConverts(1589, "MDLXXXIX");
+        assertConverts(1999, "MCMXCIX");
+        assertConverts(2008, "MMVIII");
+    }
 }
